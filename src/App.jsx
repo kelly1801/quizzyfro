@@ -33,7 +33,7 @@ function App() {
   };
 
   return (
-    <div className="p-24 bg-purple-100">
+    <div className="sm:p-1 lg:p-24 bg-purple-100">
       <div className="p-8 bg-purple-200 rounded-md">
         {!submitted && selectedQuestions.map((question, questionIndex) => (
           <div key={question.question} className='bg-purple-300 rounded p-2 my-4'>
