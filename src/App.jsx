@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { questions } from "./data";
+import GoodImg from "./imagenes/buena.jpg"
+import BadImg from "./imagenes/mala.jpg"
 
 function App() {
   const [score, setScore] = useState(0);
@@ -35,11 +37,11 @@ function App() {
       <div className="p-8 bg-purple-200 rounded-md">
         {!submitted && selectedQuestions.map((question, questionIndex) => (
           <div key={question.question} className='bg-purple-300 rounded p-2 my-4'>
-            <p>{question.question}</p>
+            <p className='my-2 font-semibold'>{question.question}</p>
             {/* Mapping through answers */}
             <ul>
               {question.answers.map((answer, answerIndex) => (
-                <li key={answerIndex}>
+                <li key={answerIndex} className='font-medium'>
                   <label>
                     <input
                       type="radio"
@@ -57,13 +59,29 @@ function App() {
       </div>
       {submitted ? (
         <div className='bg-purple-200 flex flex-col justify-center items-center justify-items-center items-center'>
-          <p className='text-5xl text-green-400'>PUNTAJE: {score}</p>
+         
+         {
+          score >= 38 ?
+          <>
+          <p className='text-5xl text-green-400'>PUNTAJE: {score }</p>
+          <p className='text-3xl font-medium'>PICOS EN LA COLA MI AMOR</p>
+          <img src={GoodImg} alt="" />
+          </>
+ : 
+ <>
+ <p className='text-5xl text-red-400'>PUNTAJE: {score }</p>
+ <p className='text-3xl font-medium text-red-400'>A ESTUDIAR VAGA</p>
+ <img src={BadImg} alt="" />
+ </>
+ 
+         }
+          
           <a href="/" className='p-2 bg-purple-600 rounded my-4'>Volver</a>
         </div>
       ) : (
         <>
         <button onClick={handleSubmit} type='submit' className='bg-purple-400 text-2xl w-full p-2 rounded'>
-          Submit
+          Enviar
         </button>
         
         </>
