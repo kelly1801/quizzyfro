@@ -48,6 +48,7 @@ function App() {
                       name={`question${questionIndex}`} // Unique name for each question
                       value={answer}
                       onChange={(event) => handleAnswerSelect(event, questionIndex, answer)}
+                      className='mr-5'
                     />
                     {answer}
                   </label>
